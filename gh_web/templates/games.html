@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+Game Heist | Games
+ {% endblock title %}
+{% block body %} 
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+.register { color: #000000; font-family: 'Raleway',sans-serif; font-size: 26px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+
+button:hover {
+  opacity:10;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.flex-container{
+  display: flex;
+  justify-content: center;
+  border-radius: 2px;
+}
+.games{
+  padding: 5px;
+}
+
+
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+</style>
+<body>
+  <marquee>
+  <div class="flex-container">
+    <div class="games">
+    <img src="/static/asphalt1.png" height="300px">
+      </div>
+
+      <div class="games"><a href="#"><span>
+        <img src="/static/BGMI_pic_1.png" height="300px">
+      </span></a></div>
+
+          <div class="games">
+            <img src="/static/freefire-1.jpg"height="300px">
+              </div>
+  </div>
+</marquee>
+
+<form action="/games" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+  <div class="container">
+    <h1 class="register">Register for games rooms and Win cash and other prizes</h1>
+    
+    <hr>
+    {% if messages %}
+    {% for i in messages %}
+    
+   
+    <div class="alert alert-{{i.tags}} alert-dismissible fade show" role="alert">
+      {{i}}
+      
+    </div>
+    {% endfor %}
+    {% endif %}
+    <label for="psw"><b>Game Date</b></label>
+    <input type="date" id="date" name="gameDate" required><br>
+    <label for="psw"><b>Time slot:</b></label>
+    <select name="gameSlot" id="timeslots" required>
+      <option value="10:00PM">10:00PM</option>
+      <option value="11:00PM">11:00PM</option>
+      <option value="12:00PM">12:00PM</option>
+    </select>
+    <label for="psw"><b>Team Name</b></label>
+    <input type="text" placeholder="Team Name" name="teamname" required>
+    <label for="psw"><b>Player 1</b></label>
+    <input type="text" placeholder="Player 1 Name" name="player1" required>
+    <label for="psw"><b>Player 2</b></label>
+    <input type="text" placeholder="Player 2 Name" name="player2" required>
+    <label for="psw"><b>Player 3</b></label>
+    <input type="text" placeholder="Player 3 Name" name="player3" required>
+    <label for="psw"><b>Player 4</b></label>
+    <input type="text" placeholder="Player 4 Name" name="player4" required>
+    <label for="psw"><b>Contact No.</b></label>
+    <input type="phone" placeholder="Contact number to send the room info on time" name="phoneno" required><br>
+
+    
+    <input type="submit">
+    
+
+    
+    
+    </div>
+  </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+{% endblock body %}
